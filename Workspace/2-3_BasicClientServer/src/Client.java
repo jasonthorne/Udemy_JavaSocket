@@ -11,7 +11,7 @@ public class Client {
 		try {
 			//client socket with IP address and port number of machine where server is running (same IP address in this local example):
 			/** get this from db when attempting to connect. Have server send this info when it fires up */
-			Socket socket = new Socket(/*"127.0.0.1"*/ "192.168.1.100", 999);
+			Socket socket = new Socket("127.0.0.1", 999);
 			
 			InputStream inputStream = socket.getInputStream(); //for retrieving info FROM server
 			OutputStream outputStream = socket.getOutputStream(); //for sending TO server
