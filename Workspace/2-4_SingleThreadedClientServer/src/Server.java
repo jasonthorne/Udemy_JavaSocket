@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class quoteService {
+class QuoteService {
 	
 	//map of product info:
 	Map<String, String>productInfo = new HashMap<String, String>();
 	
 	//constructor:
-	public quoteService() {
+	public QuoteService() {
 		//add product info to map:
 		productInfo.put("a", "100");
 		productInfo.put("b", "200");
@@ -31,15 +31,19 @@ public class Server {
 		
 		try {
 			
+			//create QuoteSerevice obj (which holds product info):
+			QuoteService quoteService = new QuoteService();
+			
 			//server socket for recieving connection, using port 999:
 			ServerSocket serverSocket = new ServerSocket(999);
 			System.out.println("started listening to port 999");
 			
 			
+			/** this is in loop so that when socket is closed after use, serverSocket waits for a new client connection */
 			while(true) {
 				//serverSocket waiting for client, and creating a new socket with this connection when accepted:
 				System.out.println("waiting for client");
-				Socket socket = serverSocket.accept();
+				Socket socket = serverSocket.accept(); 
 				
 				//input & output streams for socket:
 				InputStream inputStream = socket.getInputStream();
@@ -55,11 +59,19 @@ public class Server {
 				
 				System.out.println("recieved product: " + product);
 				
+				//get price of product from quoteSerice:
+				String price = quoteService.getQuote(product);
 				
+				if(price == null) { System.out.println("invalid product"); }
+					
+				//sent the price back to the client:
+				outputStream.write(price.getBytes());
 				
+				System.out.println("response sent.");
+				
+				/** close socket: */
+				socket.close();
 			}
-			
-			
 			
 			
 		} catch (IOException e) {
