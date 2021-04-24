@@ -16,6 +16,8 @@ public class Server {
 		
 		
 		/////https://stackoverflow.com/questions/9481865/getting-the-ip-address-of-the-current-machine-using-java
+		
+		/** 2 examples of getting ip address from system (for sending to db along with a free port number) as per stack overflow link above: */
 		//===============================
 		InetAddress IP;
 		try {
@@ -34,11 +36,11 @@ public class Server {
 			  String ip = socket.getLocalAddress().getHostAddress();
 			  System.out.println("IP of my system is: " + ip);
 			  
-			} catch (SocketException e1) {
-				e1.printStackTrace();
-			} catch (UnknownHostException e) {
-				e.printStackTrace();
-			}
+		} catch (SocketException e1) {
+			e1.printStackTrace();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 		
 		//this is prob best - as described in stackoverflow!! 
 		
