@@ -3,6 +3,27 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
+
+class quoteService {
+	
+	//map of product info:
+	Map<String, String>productInfo = new HashMap<String, String>();
+	
+	//constructor:
+	public quoteService() {
+		//add product info to map:
+		productInfo.put("a", "100");
+		productInfo.put("b", "200");
+	}
+	
+	//getter for map holding product info;
+	public String getQuote(String product) {
+		return productInfo.get(product);
+	}
+}
 
 public class Server {
 
