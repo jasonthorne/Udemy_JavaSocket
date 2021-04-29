@@ -19,11 +19,12 @@ public class Server {
 		try {
 			
 			//datagram socket object with port number
-			DatagramSocket datagramSocket = new DatagramSocket(9999);
+			DatagramSocket datagramSocket = new DatagramSocket(999);
 			
 			//datagram packet for receiving client datagram packet data:
 			DatagramPacket datagramPacket = new DatagramPacket(new byte[1000], 1000); //buffer for holding data, number of bytes to read
 			
+			System.out.println("waiting for client...");
 			/*set socket to wait to receive data from an external packet, 
 			 * which is then inserted into the buffer of packet passed as an arg.
 			 * this blocks the socket until an external packet is received*/
@@ -36,6 +37,8 @@ public class Server {
 			System.out.println("obtained from IP: " + datagramPacket.getAddress());
 			//print port number of client:
 			System.out.println("obtained from port: " + datagramPacket.getPort());
+			
+			/** +++ Here we can now send back info to client using its port number and IP. like in previous examples +++++*/
 			
 			/** CLOSE SOCKET :P */
 			datagramSocket.close();
