@@ -19,7 +19,9 @@ public class Server {
 		try {
 			
 			//datagram socket object with port number
-			DatagramSocket datagramSocket = new DatagramSocket(999);
+			DatagramSocket datagramSocket = new DatagramSocket();
+			
+			System.out.println("datagram is using port number: " + datagramSocket.getLocalPort());
 			
 			//datagram packet for receiving client datagram packet data:
 			DatagramPacket datagramPacket = new DatagramPacket(new byte[1000], 1000); //buffer for holding data, number of bytes to read
