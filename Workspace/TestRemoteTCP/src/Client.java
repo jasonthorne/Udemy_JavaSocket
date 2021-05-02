@@ -25,24 +25,24 @@ public class Client {
 			System.out.println("connected to server");
 			
 			//product to send to server:
-			String product = "a";
+			String message = "client say's hi!";
 			
 			//input & output streams for socket:
 			InputStream inputStream = socket.getInputStream();
 			OutputStream outputStream = socket.getOutputStream();
 			
 			//send product to outputStream:
-			System.out.println("sending product information");
-			outputStream.write(product.getBytes());
+			System.out.println("sending message to server");
+			outputStream.write(message.getBytes());
 			
 			//response from server:
 			byte[] response = new byte[100];
 			inputStream.read(response); //read from inputStream and store in response (100 bytes as that the size of request)
 			
-			//create price of product from bytes held in response:
-			String price = new String(response).trim();
+			//create response from server from bytes held in response:
+			String responseMsg = new String(response).trim();
 			
-			System.out.println("recieved response from server. Price is: " + price);
+			System.out.println("recieved response from server. message is: " + responseMsg);
 			
 			/** close socket */
 			socket.close();
