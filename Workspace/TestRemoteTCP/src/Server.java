@@ -6,13 +6,11 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-/** MULTI threaded application. */
-
 
 //class for running a socket on a new thread:
 class ServiceThread extends Thread {
 	 
-	Socket socket;
+	Socket socket; /** note that this socket is never closed :P */
 	
 	//constructor:
 	ServiceThread(Socket socket){
