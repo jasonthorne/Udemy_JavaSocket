@@ -28,23 +28,18 @@ class ServiceThread extends Thread {
 			InputStream inputStream = socket.getInputStream();
 			OutputStream outputStream = socket.getOutputStream();
 			
-			System.out.println("waiting on message from client");
-			
 			byte request[] = new byte[100];
 			inputStream.read(request); //read from inputStream and store in request (100 bytes as that the size of request)
 			
-			//create product from bytes held in request:
-			String message = new String(request).trim();
+			//create request string from bytes held in request:
+			String requestString = new String(request).trim();
 			
-			System.out.println("recieved message from client: " + message);
-			
+			System.out.println("recieved message from client: " + requestString);
 	
-			if(message == null) { System.out.println("invalid message"); }
+			if(requestString == null) { System.out.println("invalid message"); }
 				
 			//sent the price back to the client:
 			outputStream.write(new String("Hi from Server!").getBytes());
-			
-			System.out.println("response sent to client.");
 			
 		} catch (IOException e) { e.printStackTrace(); }
 			
@@ -57,12 +52,9 @@ public class Server {
 		
 		try {
 			
-			//create QuoteSerevice obj (which holds product info):
-			//QuoteService quoteService = new QuoteService();
-			
 			//server socket for recieving connection, using port 999:
 			ServerSocket serverSocket = new ServerSocket(999);
-			System.out.println("started listening to port 999");
+			//System.out.println("started listening to port:" + serverSocket.getLocalPort());
 			
 			
 			/** this is in loop so that when socket is closed after use, serverSocket waits for a new client connection */
@@ -79,11 +71,9 @@ public class Server {
 				socket.close();
 			}
 			
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 
 	}
 
