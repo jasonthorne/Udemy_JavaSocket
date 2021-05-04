@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS remote_test_db;
+/*DROP DATABASE IF EXISTS remote_test_db;*/
 CREATE DATABASE remote_test_db;
 
 USE remote_test_db;
