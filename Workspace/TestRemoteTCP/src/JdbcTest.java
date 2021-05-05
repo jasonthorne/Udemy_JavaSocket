@@ -18,26 +18,17 @@ public class JdbcTest {
 		
 		try {
 			
-			//1 - get a connection to the DB:
-				
+			//get a connection to the DB:
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/remote_test_db", "student", "student"); //(db url, user, password)
 			System.out.println("DB connection sucessfull!\n");
 			
-			//-------------------------------------------------
-			//2 - Create a statement:
-			
-			//statement objects are used for executing sql queries
+			//Create statement:
 			statement = connection.createStatement();
-			
-			//-------------------------------------------------
-			//3 - Execute an SQL query:
-			
+	
+			//Execute query:
 			resultSet = statement.executeQuery("select * from users");
 			
-			//-------------------------------------------------
-			//4 - Process the result set:
-			
-			//resultSet is initially placed BEFORE the first row of data 
+			//Process the result set:
 			while(resultSet.next()) {
 				System.out.println(resultSet.getString("name")
 						+ " |  " + resultSet.getInt("ip")
