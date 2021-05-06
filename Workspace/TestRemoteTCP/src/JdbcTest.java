@@ -4,7 +4,7 @@ import java.sql.*;
 
 /**
  * 
- * NOTE that the mysql-connector-java.jar MUSt be included in here and added to project build path. (properties > build path)
+ * NOTE that the mysql-connector-java.jar MUST be included in here and added to project build path. (properties > build path)
  *
  */
 
