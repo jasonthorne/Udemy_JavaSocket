@@ -19,7 +19,9 @@ public class JdbcTest {
 		try {
 			
 			//get a connection to the DB:
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/remote_test_db", "student", "student"); //(db url, user, password)
+			//connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/remote_test_db", "student", "student"); //(db url, user, password)
+			connection = DriverManager.getConnection("jdbc:mysql://johnny.heliohost.org:3306/remote_test_db", "student", "student"); //(db url, user, password)
+			
 			System.out.println("DB connection sucessfull!\n");
 			
 			//Create statement:
@@ -28,11 +30,14 @@ public class JdbcTest {
 			//Execute query:
 			resultSet = statement.executeQuery("select * from users");
 			
+			resultSet = statement.executeQuery("select host from information_schema.processlist WHERE ID=connection_id()");
+			
 			//Process the result set:
 			while(resultSet.next()) {
-				System.out.println(resultSet.getString("name")
+				/*System.out.println(resultSet.getString("name")
 						+ " |  " + resultSet.getInt("ip")
-						+ " |  " + resultSet.getInt("port"));
+						+ " |  " + resultSet.getInt("port"));*/
+				System.out.println(resultSet.getString(1));
 			}
 			
 		}catch(Exception e) {

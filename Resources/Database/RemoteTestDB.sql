@@ -1,7 +1,7 @@
 /*DROP DATABASE IF EXISTS remote_test_db;*/
-CREATE DATABASE remote_test_db;
+/*CREATE DATABASE remote_test_db;*/
 
-USE remote_test_db;
+USE nyahoi_remote_test_db;
 
 CREATE TABLE users (
 	userID INT NOT NULL AUTO_INCREMENT,

@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,7 +12,8 @@ public class Client {
 		try {
 			
 			//socket for communicating with server (holding server's ip and port number)
-			Socket socket = new Socket("127.0.0.1", 999);
+			///Socket socket = new Socket("127.0.0.1", 999);
+			Socket socket = new Socket(InetAddress.getLocalHost().getHostAddress(), 999);
 			
 			//product to send to server:
 			String message = "client say's hi!";

@@ -61,6 +61,8 @@ public class Server {
 				System.out.println("waiting for client");
 				Socket socket = serverSocket.accept(); 
 				
+				Thread.sleep(100);
+				
 				//create new thread to service client. passing it the freshly accepted socket:
 				System.out.println("starting a new thread which will service the client");
 				new ServiceThread(socket).run();
@@ -69,7 +71,7 @@ public class Server {
 				socket.close();
 			}
 			
-		} catch (IOException e) {
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
 
